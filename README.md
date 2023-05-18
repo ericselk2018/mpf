@@ -6,7 +6,7 @@ I run this command inside the mpf folder (where `__main__.py` is located):
 pyinstaller __main__.py --noconfirm --clean --add-data="config_spec.yaml;./mpf/" --add-data="mpfconfig.yaml;./mpf/" --add-data="./modes/attract/config/attract.yaml;./mpf/modes/attract/config/" --add-data="./modes/game/config/game.yaml;./mpf/modes/game/config/" --onefile
 ```
 
-The above command should create some files in /mpf/dist/ folder. You should be able to copy main.exe to mc_demo machine folder and run it with different command-line options that "game" supports (not MC options). This works for me on two different Windows 10 PCs, including one with nothing Python or MPF installed. I have only tested with the "b" option because I have no physical hardware to test with right now and no knowledge of testing with VPX yet.
+The above command should create some files in /mpf/dist/ folder. You should be able to copy main.exe to mc_demo machine folder and run it with different command-line options that "game" supports (not MC options). This works for me on two different Windows 10 PCs, including one with nothing Python or MPF installed. I have only tested with these exact command-line options, other options will likely try to load other dynamic imports and fail to run unless they are also added to the package, same with trying to run from a machine other than mc_demo: `-XbvV`
 
 Replace `--onefile` with `--debug=noarchive` to see what all is packaged inside the EXE, this mode will put all of the files in the subfolder instead of inside the EXE so you can easily see what is in the EXE (the EXE self extracts to a temp folder on each run). `--debug=imports` and `--debug=all` are also helpful at times.
 
