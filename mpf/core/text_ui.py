@@ -8,11 +8,20 @@ import mpf._version
 from mpf.core.delays import DelayManager
 from mpf.core.mpf_controller import MpfController
 
-"""I do not think these changes are needed, I will try again without them."""
-"""I was having trouble figuring out why THEMES wasn't working, but I think I just had the wrong version of asciimatics installed."""
-from asciimatics.scene import Scene
-from asciimatics.widgets import Frame, Layout, THEMES, Label, Divider, PopUpDialog, Widget
-from asciimatics.screen import Screen
+try:
+    from asciimatics.scene import Scene
+    from asciimatics.widgets import Frame, Layout, THEMES, Label, Divider, PopUpDialog, Widget
+    from asciimatics.screen import Screen
+except ImportError:
+    Scene = None
+    Frame = None
+    Layout = object
+    THEMES = None
+    Label = None
+    Divider = None
+    PopUpDialog = None
+    Widget = None
+    Screen = None
 
 MYPY = False
 if MYPY:   # pragma: no cover
